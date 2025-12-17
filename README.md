@@ -35,9 +35,38 @@ The firmware is organized in a modular manner to clearly separate application lo
   - Custom memory layout for flash and SRAM
 
 ## How It Works
+1. **Analog Input Acquisition**  
+   A potentiometer connected to an ADC-capable pin acts as a joystick axis. The voltage level represents the joystick position.
+
+2. **Deterministic Sampling Using Timer**  
+   A TCPWM timer is configured to generate periodic interrupts at a fixed interval of 20ms. This ensures the ADC is sampled at consistent and predictable time intervals.
+
+3. **ADC Conversion**  
+   Inside the timer ISR, the on-chip 12-bit SAR ADC samples the analog voltage and converts it into a digital value.
+
+4. **Data Processing**  
+   The raw ADC value is scaled to represent joystick direction/position.
+
+5. **UART Transmission**  
+   The processed joystick value is transmitted over UART to a host system, enabling real-time control for external applications such as games or simulations.
 
 ## Build & Flash Instructions
+1. Open the project in the preferred development environment or terminal.
+2. Build the project using the provided Makefile or toolchain.
+3. Flash the generated binary to the PSoC 4100S Plus using KitProg.
+4. Open a serial terminal on the host system to observe joystick data transmitted over UART.
 
 ## Project Highlights
+- Bare-metal firmware development
+- Direct register-level configuration of peripherals
+- Deterministic real-time behavior using hardware timers
+- Modular driver-based firmware architecture
+- Custom startup code and linker script usage
+- Designed and tested on real hardware
 
 ## Future Improvements
+- Hardware-triggered ADC sampling using TCPWM
+- DMA-based ADC to UART data transfer
+- Support for multi-axis joystick input
+- UART command interface for runtime configuration
+- Low-power mode integration
