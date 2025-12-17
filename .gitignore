@@ -53,3 +53,14 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# Build output
+Debug/
+Release/
+build/
+
+# Editor files
+.vscode/
+*.code-workspace
+
+*.lst
