@@ -8,6 +8,16 @@ The firmware is written entirely in **bare-metal C**, using **direct register-le
 
 The project focuses on understanding low-level microcontroller operation, including clock configuration, startup code, linker scripts, interrupt-driven design, and peripheral interfacing on real hardware.
 
+## Demo
+
+The following demonstration shows the **end-to-end system**, where the PSoC 4100S Plus runs bare-metal firmware to acquire analog joystick input and transmit control data over UART to a host application.
+
+![Analog Joystick Demo](docs/demo.gif)
+
+*Real-time control of an endless runner game using the PSoC 4100S Plus bare-metal analog joystick controller.*
+
+[Watch full demo video](docs/Analog_Joystick_Demo.mp4)
+
 ## Hardware Used
 - **Microcontroller**: Infineon PSoC 4100S Plus (Arm Cortex-M0+)
 - **Development Board**: CY8CKIT-149 PSoC 4100S Plus Prototyping Kit
